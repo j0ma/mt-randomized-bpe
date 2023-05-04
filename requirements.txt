@@ -1,17 +1,9 @@
 # Install branch `random-merges` from subword-nmt clone
-git+ssh://git@github.com/bltlab/paranames.git@not-just-py38
 git+ssh://git@github.com/j0ma/subword-nmt.git@random-merges
 git+ssh://git@github.com/j0ma/prepx@main
 git+https://github.com/thammegowda/mtdata
 
-editdistance
-tensorboardX
-ranger-fm
 sacrebleu
 fairseq
 pandas
-attrs
 click
-jiwer
-numpy
-tqdm
