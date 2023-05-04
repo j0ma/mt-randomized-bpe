@@ -302,15 +302,15 @@ evaluate() {
 
     paste "${GOLD}" "${HYPS}" "${SOURCE}" >"${SOURCE_TSV}"
 
-    # Compute some evaluation metrics
-    python scripts/evaluate.py \
-        --references-path "${GOLD}" \
-        --hypotheses-path "${HYPS}" \
-        --source-path "${SOURCE}" \
-        --score-output-path "${SCORE}" \
-        --output-as-tsv
-
-    cat "${SCORE}"
+    # Sacrebleu scores
+    for metric in bleu chrf
+    do
+        sacrebleu \
+            "${GOLD}" \
+            -i "${HYPS}" \
+            -b -m ${metric} -w 4 \
+            > ${SCORE}.${metric}
+    done
 
     echo "✅ Done!"
 
