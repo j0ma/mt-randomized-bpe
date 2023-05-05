@@ -47,3 +47,7 @@ You can also customize your config file if you're running a custom experiment. S
 ```bash
 sbatch -J your_job_name sweep_experiment.sh
 ```
+
+4. Analyze results
+
+After the experiments finish, the scores can be found in `test.eval.score.{bleu,chrf}` in each experiment folder.
