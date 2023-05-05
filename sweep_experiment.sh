@@ -9,19 +9,12 @@
 #SBATCH --export=ALL
 #SBATCH --requeue
 #SBATCH --gres=gpu:V100:10
-#SBATCH --mail-user=jonnesaleva@brandeis.edu
-#SBATCH --mail-type=ALL
 #SBATCH --output=%x-%j.out
 
 env
 
 test -z "${randseg_cfg_file}" && exit 1
 test -z "${randseg_hparams_folder}" && exit 1
-
-get_nth_row () {
-    local nth=$1
-    head -n $nth | tail -n 1
-}
 
 run_single_exp () {
     local gpu_idx=$1
@@ -41,7 +34,6 @@ run_single_exp () {
 
 }
 
-export -f get_nth_row
 export -f run_single_exp
 
 
